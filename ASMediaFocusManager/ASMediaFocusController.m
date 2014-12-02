@@ -34,8 +34,7 @@ static NSTimeInterval const kDefaultOrientationAnimationDuration = 0.4;
     [super viewDidLoad];
     self.accessoryView.alpha = 0;
 
-
-[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationDidChangeNotification:) name:UIDeviceOrientationDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationDidChangeNotification:) name:UIDeviceOrientationDidChangeNotification object:nil];
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
 
 }
@@ -45,7 +44,7 @@ static NSTimeInterval const kDefaultOrientationAnimationDuration = 0.4;
     [self setMainImageView:nil];
     [self setContentView:nil];
 
-[[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
     [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
 }
 
