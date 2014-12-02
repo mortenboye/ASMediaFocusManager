@@ -32,36 +32,26 @@ static NSTimeInterval const kDefaultOrientationAnimationDuration = 0.4;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.titleLabel.layer.shadowOpacity = 1;
-    self.titleLabel.layer.shadowOffset = CGSizeZero;
-    self.titleLabel.layer.shadowRadius = 1;
     self.accessoryView.alpha = 0;
+
+
+[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationDidChangeNotification:) name:UIDeviceOrientationDidChangeNotification object:nil];
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+
 }
 
-- (void)viewDidUnload
+- (void) dealloc
 {
     [self setMainImageView:nil];
     [self setContentView:nil];
-    [super viewDidUnload];
-}
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationDidChangeNotification:) name:UIDeviceOrientationDidChangeNotification object:nil];
-    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
+[[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
     [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
 }
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-    return UIInterfaceOrientationMaskPortrait;
+    return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationLandscape;
 }
 
 - (BOOL)isParentSupportingInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
