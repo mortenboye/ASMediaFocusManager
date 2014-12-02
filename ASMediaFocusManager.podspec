@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.homepage = "https://github.com/autresphere/ASMediaFocusManager"
   s.source = {
     :git => "https://github.com/mortenboye/ASMediaFocusManager.git",
-    :tag => "0.2"
+    :tag => "0.2.1"
   }
   s.platform = :ios, '6.0'
   s.source_files = 'ASMediaFocusManager/*.{h,m}'
