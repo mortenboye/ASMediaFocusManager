@@ -215,6 +215,7 @@ static CGFloat const kAnimationDuration = 0.5;
     
     doneButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [doneButton setTitle:NSLocalizedString(@"Done", @"Done") forState:UIControlStateNormal];
+    doneButton.titleLabel.font = [UIFont fontWithName:@"Seravek" size:17];
     [doneButton addTarget:self action:@selector(handleDefocusGesture:) forControlEvents:UIControlEventTouchUpInside];
     doneButton.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
     [doneButton sizeToFit];
