@@ -33,6 +33,11 @@ static NSTimeInterval const kDefaultOrientationAnimationDuration = 0.4;
 {
     [super viewDidLoad];
     self.accessoryView.alpha = 0;
+    
+    self.titleLabel.layer.shadowColor = [UIColor whiteColor].CGColor;
+    self.titleLabel.layer.shadowOffset = CGSizeZero;
+    self.titleLabel.layer.shadowRadius = 2.0;
+    self.titleLabel.layer.shadowOpacity = 1.0;
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationDidChangeNotification:) name:UIDeviceOrientationDidChangeNotification object:nil];
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
@@ -50,7 +55,7 @@ static NSTimeInterval const kDefaultOrientationAnimationDuration = 0.4;
 
 - (NSUInteger)supportedInterfaceOrientations
 {
-    return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationLandscape;
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 - (BOOL)isParentSupportingInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
@@ -256,7 +261,8 @@ static NSTimeInterval const kDefaultOrientationAnimationDuration = 0.4;
 
 - (void)scrollViewDidZoom:(UIScrollView *)scrollView
 {
-    [self showAccessoryView:self.scrollView.zoomScale == self.scrollView.minimumZoomScale];
+    // Always show accessory view (done button and label)
+//    [self showAccessoryView:self.scrollView.zoomScale == self.scrollView.minimumZoomScale];
 }
 
 #pragma mark - Notifications
